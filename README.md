@@ -6,7 +6,7 @@ K tomu hledáme tzv. bijekci (vzájemně jednoznačné zobrazení) mezi vrcholy 
 Nechť mají oba grafy stejný počet vrcholů $n$.
 
 Protože máme k dispozici pouze hodnoty true/false, tak u každého vrcholu z $G_1$ budeme zkoumat, jestli se mapuje na nějaký z n vrcholů $G_2$.
-Budeme proto potřebovat n^2 proměnných.
+Budeme proto potřebovat $n^2$ proměnných.
 
-Označíme si je $x_{u,w}$, kde u $\in G_1$ a w $ \in G_2$.
-Pokud je proměnná $x_{u,w} true, tak se vrchol u mapuje na vrchol w.
+Označíme si je $x_{u,w}$, kde u $\in G_1$ a w $\in G_2$.
+Pokud je proměnná $x_{u,w}$ true, tak se vrchol u mapuje na vrchol w.

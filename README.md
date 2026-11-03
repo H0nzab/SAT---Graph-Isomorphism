@@ -17,12 +17,24 @@ Pokud je proměnná $x_{u,w}$ true, tak se vrchol u mapuje na vrchol w.
 
 Potřebujeme 4 podmínky:
 1. Každý vrchol z $G_1$ musí ukazovat alespoň na jeden vrchol z $G_2$
+   
    $X_{u,1} \lor X_{u,2} \lor X_{u,3} \dots \lor X_{u,n}$
 2. Každý vrchol z $G_1$ musí ukazovat nejvýše na jeden vrchol z $G_2$
+   
    Pro každou dvojici w != z:
    $\neg X_{u,w} \lor \neg X_{u,z}$
 3. Na každý vrchol v $G_2$ musí ukazovat nějaký vrchol z $G_1$
+   
    $X_{1,w} \lor X_{2,w} \lor X_{3,w} \dots \lor X_{n,w}$
-4. Na každý vrchol v $G_2$ musí ukazovat nějvýše 1 vrchol z $G_2$
+4. Na každý vrchol v $G_2$ musí ukazovat nějvýše 1 vrchol z $G_2
+   
    Pro každou dvojici u != v:
    $\neg X_{u,w} \lor \neg X_{v,w}$
+
+## Struktura
+Hledáme konflikty, které nastanou pokud:
+1. Hrana v $G_1$ existuje, ale odpovídající hrana neexistuje v $G_2$
+2. Hrana v $G_1$ neexistuje, ale odpovídající hrana existuje v $G_2$
+   
+   $\neg (X_{u,w} \land X_{v,z})$
+   neboli $\neg X_{u,w} \lor \neg X_{v,z}$

@@ -26,7 +26,7 @@ Potřebujeme 4 podmínky:
 3. Na každý vrchol v $G_1$ musí ukazovat nějaký vrchol z $G_1$
    
    $X_{1,w} \lor X_{2,w} \lor X_{3,w} \dots \lor X_{n,w}$
-4. Na každý vrchol v $G_2$ musí ukazovat nějvýše 1 vrchol z $G_2
+4. Na každý vrchol v $G_2$ musí ukazovat nějvýše 1 vrchol z $G_2$
    
    Pro každou dvojici u != v:
    $\neg X_{u,w} \lor \neg X_{v,w}$

@@ -4,9 +4,7 @@ def load_instance(filepath):
     with open(filepath, 'r') as f:
         lines = [line.strip() for line in f if line.strip() and not line.startswith("#")]
         
-    n = int(lines[0])
-    m1 = int(lines[1])
-    m2 = int(lines[2])
+    n, m1, m2 = map(int, lines[0].split())
     
     if m1 != m2:
         return None, None, n 
@@ -14,7 +12,7 @@ def load_instance(filepath):
     adj1 = [[False] * n for _ in range(n)]
     adj2 = [[False] * n for _ in range(n)]
     
-    idx = 3
+    idx = 1
     for _ in range(m1):
         u, v = map(int, lines[idx].split())
         adj1[u][v] = adj1[v][u] = True
@@ -41,3 +39,5 @@ if __name__ == "__main__":
         sys.exit(0)
         
     print(f"Úspěšně načteny grafy o {n} vrcholech.")
+    print(adj1)
+    print(adj2)

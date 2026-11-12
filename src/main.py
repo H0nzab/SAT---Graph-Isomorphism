@@ -1,0 +1,43 @@
+import sys
+
+def load_instance(filepath):
+    with open(filepath, 'r') as f:
+        lines = [line.strip() for line in f if line.strip() and not line.startswith("#")]
+        
+    n = int(lines[0])
+    m1 = int(lines[1])
+    m2 = int(lines[2])
+    
+    if m1 != m2:
+        return None, None, n 
+        
+    adj1 = [[False] * n for _ in range(n)]
+    adj2 = [[False] * n for _ in range(n)]
+    
+    idx = 3
+    for _ in range(m1):
+        u, v = map(int, lines[idx].split())
+        adj1[u][v] = adj1[v][u] = True
+        idx += 1
+        
+    for _ in range(m2):
+        u, v = map(int, lines[idx].split())
+        adj2[u][v] = adj2[v][u] = True
+        idx += 1
+        
+    return adj1, adj2, n
+
+if __name__ == "__main__":
+    filepath = "instances/test.txt" 
+    
+    try:
+        adj1, adj2, n = load_instance(filepath)
+    except FileNotFoundError:
+        print(f"Soubor {filepath} nenalezen.")
+        sys.exit(1)
+    
+    if adj1 is None:
+        print("Grafy nemají stejný počet hran, nejsou izomorfní.")
+        sys.exit(0)
+        
+    print(f"Úspěšně načteny grafy o {n} vrcholech.")

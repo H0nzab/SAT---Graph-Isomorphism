@@ -1,1 +1,10 @@
-
+# Hlavička: n, m1, m2
+3 3 3
+# Hrany G1
+0 1
+1 2
+2 0
+# Hrany G2
+0 1
+1 2
+2 0

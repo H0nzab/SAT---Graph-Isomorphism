@@ -1,4 +1,5 @@
 import sys
+from encoder import SatEncoder
 
 def load_instance(filepath):
     with open(filepath, 'r') as f:
@@ -39,5 +40,10 @@ if __name__ == "__main__":
         sys.exit(0)
         
     print(f"Úspěšně načteny grafy o {n} vrcholech.")
-    print(adj1)
-    print(adj2)
+
+    encoder = SatEncoder(adj1, adj2, n)
+    encoder.generate_bijection()
+    
+    print(f"\nVygenerováno {len(encoder.clauses)} klauzulí pro bijekci:")
+    for clause in encoder.clauses:
+        print(clause)

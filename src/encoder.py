@@ -42,3 +42,12 @@ class SatEncoder:
                 clause.append(self.var_id(u, w))
             
             self.clauses.append(clause)
+
+    def _rule_4_w_at_most_one_u(self):
+        """
+        Pravidlo 4: Na každý vrchol v G2 musí ukazovat nejvýše 1 vrchol z G1.
+        """
+        for w in range(self.n):
+            for u in range(self.n):
+                for v in range(u + 1, self.n):
+                    self.clauses.append([-self.var_id(u, w), -self.var_id(v, w)])

@@ -51,3 +51,9 @@ class SatEncoder:
             for u in range(self.n):
                 for v in range(u + 1, self.n):
                     self.clauses.append([-self.var_id(u, w), -self.var_id(v, w)])
+
+    def generate_bijection(self):
+        self._rule_1_u_at_least_one_w()
+        self._rule_2_u_at_most_one_w()
+        self._rule_3_w_at_least_one_u()
+        self._rule_4_w_at_most_one_u()

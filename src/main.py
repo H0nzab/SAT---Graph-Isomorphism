@@ -26,7 +26,7 @@ def load_instance(filepath):
     return adj1, adj2, n
 
 if __name__ == "__main__":
-    filepath = "instances/test.txt" 
+    filepath = "instances/test_n2.txt" 
     
     try:
         adj1, adj2, n = load_instance(filepath)

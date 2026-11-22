@@ -43,3 +43,5 @@ if __name__ == "__main__":
 
     encoder = SatEncoder(adj1, adj2, n)
     encoder.generate_bijection()
+    output_path = "instances/output.cnf"
+    encoder.save_dimacs(output_path)

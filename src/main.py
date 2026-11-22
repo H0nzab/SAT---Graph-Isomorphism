@@ -43,7 +43,3 @@ if __name__ == "__main__":
 
     encoder = SatEncoder(adj1, adj2, n)
     encoder.generate_bijection()
-    
-    print(f"\nVygenerováno {len(encoder.clauses)} klauzulí pro bijekci:")
-    for clause in encoder.clauses:
-        print(clause)

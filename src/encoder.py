@@ -76,3 +76,13 @@ class SatEncoder:
         self._rule_3_w_at_least_one_u()
         self._rule_4_w_at_most_one_u()
         self._rule_edges()
+
+    def to_dimacs(self):
+        num_vars = self.n * self.n
+        num_clauses = len(self.clauses)
+        lines = [f"p cnf {num_vars} {num_clauses}"]
+
+        for clause in self.clauses:
+            lines.append(" ".join(map(str, clause)) + " 0")
+
+        return "\n".join(lines) + "\n"

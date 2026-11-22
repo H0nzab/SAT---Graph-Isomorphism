@@ -86,3 +86,7 @@ class SatEncoder:
             lines.append(" ".join(map(str, clause)) + " 0")
 
         return "\n".join(lines) + "\n"
+
+    def save_dimacs(self, filepath):
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(self.to_dimacs())

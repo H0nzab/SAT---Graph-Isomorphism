@@ -1,5 +1,6 @@
 import sys
 from encoder import SatEncoder
+from solver import solve_cnf
 
 def load_instance(filepath):
     with open(filepath, 'r') as f:
@@ -45,3 +46,13 @@ if __name__ == "__main__":
     encoder.generate_bijection()
     output_path = "instances/output.cnf"
     encoder.save_dimacs(output_path)
+
+    is_sat, true_vars = solve_cnf(output_path)
+
+    if is_sat:
+        mapping = encoder.decode_model(true_vars)
+        print("Grafy jsou izomorfní. Bijekce (G1 -> G2):")
+        for u, w in sorted(mapping.items()):
+            print(f"  {u} -> {w}")
+    else:
+        print("Grafy nejsou izomorfní.")

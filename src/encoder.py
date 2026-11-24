@@ -90,3 +90,11 @@ class SatEncoder:
     def save_dimacs(self, filepath):
         with open(filepath, "w", encoding="utf-8") as f:
             f.write(self.to_dimacs())
+
+    def decode_model(self, true_vars):
+        mapping = {}
+        for var in true_vars:
+            idx = var - 1
+            u, w = divmod(idx, self.n)
+            mapping[u] = w
+        return mapping

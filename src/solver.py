@@ -1,6 +1,6 @@
 import subprocess
 import sys
-
+import re
 
 def solve_cnf(cnf_filepath, solver_cmd=None):
     """
@@ -20,20 +20,18 @@ def solve_cnf(cnf_filepath, solver_cmd=None):
         print(f"Chyba: SAT solver '{solver_cmd[0]}' nebyl nalezen.")
         sys.exit(1)
 
-    is_sat = False
-    true_vars = []
+    match = re.search(r"c CPU time\s*:\s*([0-9.]+)\s*s", result.stdout)
+    cpu_time = match.group(1) if match else "?"
 
+    if result.returncode == 20:
+        return False, [], cpu_time
+
+    true_vars = []
     for line in result.stdout.splitlines():
-        line = line.strip()
-        if line.startswith("s "):
-            if "UNSATISFIABLE" in line:
-                return False, []
-            if "SATISFIABLE" in line:
-                is_sat = True
-        elif line.startswith("v "):
+        if line.startswith("v "):
             for token in line.split()[1:]:
                 val = int(token)
                 if val > 0:
                     true_vars.append(val)
 
-    return is_sat, true_vars
+    return True, true_vars, cpu_time

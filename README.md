@@ -77,3 +77,66 @@ $$\text{ID}(u, w) = u \cdot n + w + 1, \qquad u = \lfloor (\text{ID} - 1) / n \r
 * podmínky bijekce (1–4): $2n + n^2(n - 1)$ klauzulí,
 
 * podmínka zachování hran (5): $4m\left(\binom{n}{2} - m\right)$ binárních klauzulí (kde $m = |E_1| = |E_2|$).
+
+## 3. Uživatelská dokumentace
+
+
+### Požadavky
+
+* Python 3.10+
+
+* Zkompilovaný SAT solver **Glucose 4.2**
+
+### Spuštění
+
+Z kořenové složky repozitáře:
+
+```bash
+
+python3  src/main.py
+
+```
+
+Na řádce 31 v `main.py` je proměnná `filepath`. V té nastavujeme vstupní soubor s cestou. Sestavená CNF formule v DIMACS formátu se při každém spuštění uloží do souboru `instances/output.cnf`.
+
+
+Pro generování testovacích izomorfních grafů slouží pomocný skript `generate.py`:
+
+```bash
+
+python3  generate.py <pocet_vrcholu> <vystupni_soubor>
+
+```
+
+### Formát vstupního souboru
+
+Textový soubor, vrcholy jsou indexovány `0` až `n - 1`:
+
+```text
+
+n m1 m2
+
+u1 v1
+
+...
+
+u2 v2
+
+...
+
+```
+
+*  `n` – počet vrcholů v obou grafech
+
+*  `m1`, `m2` – počet hran prvního a druhého grafu
+
+* následuje `m1` řádků s hranami grafu $G_1$ a `m2` řádků s hranami grafu $G_2$.
+
+
+### Formát výstupu
+
+*  **SAT:** vypíše nalezenou bijekci po řádcích ve tvaru `u -> w` ($u \in V_1, w \in V_2$).
+
+*  **UNSAT:** vypíše zprávu, že grafy nejsou izomorfní.
+
+A nakonec program vypíše čas běhu SAT solveru v sekundách

@@ -59,3 +59,21 @@ $$\forall w \in V_2, \forall u, v \in V_1 \ (u < v): \quad  \neg x_{u,w} \lor  \
 5.  *Pokud dvojice vrcholů $(u, v)$ v $G_1$ má jiný vztah než dvojice $(w, z)$ v $G_2$, nemohou současně platit přiřazení $f(u) = w$ a $f(v) = z$:*
 
 $$\forall u, v \in V_1 \ (u < v), \forall w, z \in V_2 \ (w \neq z): \quad  \big(\{u, v\} \in E_1  \iff \{w, z\} \notin E_2\big) \implies (\neg x_{u,w} \lor  \neg x_{v,z})$$
+
+## 2. Zakódování do CNF
+
+### Zvolené kódování
+
+Formát DIMACS CNF vyžaduje číslování proměnných celými čísly od $1$ do $n^2$. Převod indexů $(u, w)$ na ID proměnné a zpětné dekódování modelu probíhá podle vztahů:
+
+
+$$\text{ID}(u, w) = u \cdot n + w + 1, \qquad u = \lfloor (\text{ID} - 1) / n \rfloor, \quad w = (\text{ID} - 1) \bmod n$$
+  
+
+*  **Počet proměnných:** $n^2$
+
+*  **Počet klauzulí:**
+
+* podmínky bijekce (1–4): $2n + n^2(n - 1)$ klauzulí,
+
+* podmínka zachování hran (5): $4m\left(\binom{n}{2} - m\right)$ binárních klauzulí (kde $m = |E_1| = |E_2|$).

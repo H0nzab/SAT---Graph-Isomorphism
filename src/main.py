@@ -47,8 +47,7 @@ if __name__ == "__main__":
     output_path = "instances/output.cnf"
     encoder.save_dimacs(output_path)
 
-    is_sat, true_vars = solve_cnf(output_path)
-
+    is_sat, true_vars, cpu_time = solve_cnf(output_path)
     if is_sat:
         mapping = encoder.decode_model(true_vars)
         print("Grafy jsou izomorfní. Bijekce (G1 -> G2):")
@@ -56,3 +55,5 @@ if __name__ == "__main__":
             print(f"  {u} -> {w}")
     else:
         print("Grafy nejsou izomorfní.")
+    
+    print(f"Čas řešení (CPU): {cpu_time} s")

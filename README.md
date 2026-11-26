@@ -132,7 +132,6 @@ u2 v2
 
 * následuje `m1` řádků s hranami grafu $G_1$ a `m2` řádků s hranami grafu $G_2$.
 
-
 ### Formát výstupu
 
 *  **SAT:** vypíše nalezenou bijekci po řádcích ve tvaru `u -> w` ($u \in V_1, w \in V_2$).
@@ -140,3 +139,11 @@ u2 v2
 *  **UNSAT:** vypíše zprávu, že grafy nejsou izomorfní.
 
 A nakonec program vypíše čas běhu SAT solveru v sekundách
+
+## 4. Přiložené instance
+
+*  `instances/test_n2.txt` – malá splnitelná instance ($n = 2, m = 1$); dva izomorfní grafy tvořené jednou hranou. Sloužilo jako test pro vytváření formulí a klazulí. 
+
+*  `instances/test_n4unsat.txt` – malá, člověkem řešitelná nesplnitelná instance ($n = 4, m = 3$); graf $G_1$ je cesta $P_4$ se stupni vrcholů $(1, 2, 2, 1)$, graf $G_2$ je hvězda $K_{1,3}$ se stupni $(3, 1, 1, 1)$. Oba grafy mají stejný počet vrcholů i hran, projdou tedy vstupní kontrolou a nesplnitelnost dokáže až SAT solver.
+
+*  `instances/test_n[m].txt` – splnitelné instance, kde [m] značí počet vrcholů. Jedná se o $4$-regulární graf s náhodně permutovanými vrcholy).

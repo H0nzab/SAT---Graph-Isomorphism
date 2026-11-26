@@ -147,3 +147,26 @@ A nakonec program vypíše čas běhu SAT solveru v sekundách
 *  `instances/test_n4unsat.txt` – malá, člověkem řešitelná nesplnitelná instance ($n = 4, m = 3$); graf $G_1$ je cesta $P_4$ se stupni vrcholů $(1, 2, 2, 1)$, graf $G_2$ je hvězda $K_{1,3}$ se stupni $(3, 1, 1, 1)$. Oba grafy mají stejný počet vrcholů i hran, projdou tedy vstupní kontrolou a nesplnitelnost dokáže až SAT solver.
 
 *  `instances/test_n[m].txt` – splnitelné instance, kde [m] značí počet vrcholů. Jedná se o $4$-regulární graf s náhodně permutovanými vrcholy).
+
+## 5. Experimenty
+
+Pro experimenty jsem s pomocí `generate.py` vygeneroval instance, abych otestoval limity solveru.
+| Instance (.txt) | Vrcholů | Hran | Proměnných | Klauzulí | Čas |
+| :--- | :---: |:---: |:---: |:---: | ---: |
+| `test_n2` | 2 | 1 | 4 | 8 | 0.001s |
+| `test_n4unsat` | 4 | 3 | 16 | 92 | 0.001s |
+| `test_n20` | 20 | 40 | 400 | 31 640 | 0.033s |
+| `test_n26` | 26 | 52 | 676 | 73 736 | 0.097s |
+| `test_n40` | 40 | 80 | 1600 | 286 480 | 0.546s |
+| `test_n80` | 80 | 160 | 6 400 | 2 425 760 | 9.387s |
+| `test_n90` | 90 | 180 | 8 100 | 3 475 080 | 14.951s |
+| `test_n100` | 100 | 200 | 10 000 | 4 790 200 | 22.771s |
+| `test_n200` | 200 | 400 | 40 000 | 39 160 400 | 5.044s |
+
+### Shrnutí výsledků
+
+* U malých instancí ($n \le  50$) je doba běhu solveru zanedbatelná (pod $1\text{ s}$).
+
+* U větších instancí kolem $n \approx  50\text{–}120$ se čas hledání bijekce pohybuje do jedné minuty.
+
+* Zkoušel jsem dát opravdu velkou instanci $(n = 200)$ a sice program ukázal čas 5 sekund, ale to bude asi způsobeno přetečením. Zkusil jsem si čas stopnout pomocí stopek a vyšlo mi 2 minuty 18 sekund.
